@@ -1,18 +1,17 @@
-import React from 'react';
-import ProductForm from './components/ProductForm';
-import AllProductView from './components/AllProductView';
+// import React from 'react';
 import OneProductView from './components/OneProductView';
-import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
-
+import Main from './views/Main';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 
 function App() {
     return (
         <BrowserRouter>
             <div className="App">
-                <ProductForm />
-                <AllProductView />
-                <OneProductView />
+                <Routes>
+                    <Route path= "/" element = {<Main />} />
+                    <Route path= "/product/:id" element = {<OneProductView />}  />
+                </Routes>
             </div>
         </BrowserRouter>
     );

@@ -1,13 +1,13 @@
 const Product = require("../models/product.model")
 
 module.exports.createProduct = (req, res) => {
+    console.log(req, req.body)
     Product.create(req.body)
         .then(newlyCreatedProduct => {
             res.json({ product: newlyCreatedProduct })
         })
         .catch(err => res.json(err));
 }
-
 
 module.exports.findAllProducts = (req, res) => {
     Product.find()
@@ -16,7 +16,6 @@ module.exports.findAllProducts = (req, res) => {
         })
         .catch(err => res.json(err));
 }
-
 
 module.exports.findOneProduct = (req, res) => {
     Product.findOne({ _id: req.params.id })

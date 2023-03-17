@@ -6,26 +6,24 @@ const ProductForm = (props) => {
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
 
-    const [product, setProduct] = useState([]);
-
-    axios.get('http://localhost:8000/api/products').then(data => {
-        setProduct(data)
-    })
-
+    const { thingTypedInForm, savedFormItem } = props;
 
     const createProduct = (e) => {
         e.preventDefault();
 
-        setProduct([...product, { title, price, description }]);
+        savedFormItem([...thingTypedInForm, { title, price, description }]);
 
         axios.post('http://localhost:8000/api/products', {
             title,
             price,
-            description
-        }).then(res=>{
+            description,
+        }).then(res => {
+            console.log('res', res)
             setTitle("");
             setPrice("");
             setDescription("");
+        }).catch(e => {
+            console.log('error', e);
         })
     };
     
@@ -47,16 +45,6 @@ const ProductForm = (props) => {
             </div>
             <input type = "submit" value = "Create" />
         </form>
-
-        <h2>All Products</h2>
-        <div>
-            {
-                product.map(item => 
-                    <p>{item.title}</p>
-                )
-            }
-        </div>
-
 
         </>
 
