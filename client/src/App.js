@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import OneProductView from './components/OneProductView';
 import Main from './views/Main';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
