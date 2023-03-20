@@ -23,7 +23,7 @@ module.exports.findAllProducts = (req, res) => {
 module.exports.findOneProduct = (req, res) => {
     Product.findOne({ _id: req.params.id })
         .then(oneProduct => {
-            res.json({ response: oneProduct })
+            res.json(oneProduct)
 
         })
         .catch(err => res.json(err));
@@ -37,7 +37,7 @@ module.exports.updateExistingProduct = (req, res) => {
         { new: true, runValidators: true }
     )
         .then(updatedProduct => {
-            res.json({ product: updatedProduct })
+            res.json(updatedProduct)
         })
         .catch(err => res.json(err));
 }
@@ -46,7 +46,7 @@ module.exports.updateExistingProduct = (req, res) => {
 module.exports.deleteAnExistingProduct = (req, res) => {
     Product.remove({ _id: req.params.id })
         .then(result => {
-            res.json({ result: result })
+            res.json(result)
         })
         .catch(err => res.json(err));
 }

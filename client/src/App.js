@@ -1,3 +1,4 @@
+import "./App.css"
 import React from 'react';
 import OneProductView from './components/OneProductView';
 import Main from './views/Main';

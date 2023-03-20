@@ -21,16 +21,17 @@ const AllProductView = (props) => {
     }, [savedFormItem]);
 
     return (
-        <div>
+        <div className='allProducts'>
             {
-                thingTypedInForm.map((product, index)=>{
-                return(
-                    <div>
-                        <Link to={`/product/${product._id}`}>{product.title}</Link>
+                thingTypedInForm.map((product, index) => (
+                    <div key={index}>
+                        <div>
+                            <Link to={`/product/${product._id}`}>{product.title}</Link>
+                        </div>
                     </div>
-                )})
+                ))
             }
         </div>
-    )
-}
+    );
+};
 export default AllProductView;

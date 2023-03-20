@@ -6,13 +6,13 @@ const OneProductView = (props) => {
     const [oneProduct, setOneProduct] = useState({})
     const {id} = useParams();
     useEffect(() => {
-        axios.get("http://localhost:8000/api/products/" + id)
+        axios.get(`http://localhost:8000/api/products/${id}`)
             .then(res => {
               console.log(res.data);
               setOneProduct(res.data);
-            })
+            }) 
             .catch( err => console.log(err) );
-    }, []);
+    }, [id]);
 
   return (
     <div>
@@ -20,7 +20,7 @@ const OneProductView = (props) => {
       <p>Price: ${oneProduct.price}</p>
       <p>Description: {oneProduct.description}</p>
     </div>
-  )
-}
+  );
+};
 
 export default OneProductView;
